@@ -1,0 +1,27 @@
+.card{
+    border-radius: 20px;
+    border:0px;
+    background-color:#100c25;
+}
+.register-form .form-group{
+    margin-left: 7px;
+    margin-right: 7px;
+    color: #7a6ba1;
+}
+h2{
+    margin-left: 12px;
+    margin-bottom: 30px;
+    font-weight: 420;
+    color: #320ed3;
+}
+.col{
+    padding-left: 0;
+    padding-right: 0;
+}
+.btn-primary{
+    background-color: #320ed3;
+    border-color: #320ed3;
+}
+a{
+    color: #320ed3;
+}
