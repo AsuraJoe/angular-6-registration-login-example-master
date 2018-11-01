@@ -1,48 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, UserService } from '../_services';
 
 import { first } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    templateUrl: 'forgot-password.component.html',
-    styleUrls: ['forgot-password.component.css']
+    templateUrl: 'reset-password.component.html',
+    styleUrls: ['reset-password.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
-    forgotPasswordForm: FormGroup;
+export class ResetPasswordComponent {
+    resetPasswordForm: FormGroup;
     loading = false;
     submitted = false;
+    token : String;
 
     constructor(
         private formBuilder: FormBuilder,
         private alertService: AlertService,
         private userService: UserService,
-        private router: Router){}
+        private router: Router,
+        private route: ActivatedRoute){}
     
     ngOnInit(){
-        this.forgotPasswordForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]]
+        this.resetPasswordForm = this.formBuilder.group({
+            password: ['', [Validators.required, Validators.minLength(8)]]
         }); 
+
+        this.token = this.route.snapshot.queryParams['token']
     }
 
     //Convenient getter
-    get f() {return this.forgotPasswordForm.controls;}
+    get f() {return this.resetPasswordForm.controls;}
 
     onSubmit() {
         this.submitted = true;
 
         // stop here if form is invalid
-        if (this.forgotPasswordForm.invalid) {
+        if (this.resetPasswordForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.userService.forgotPass(this.forgotPasswordForm.value)
+        this.userService.resetPass(this.resetPasswordForm.value, this.token)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('An email has been sent', true);
+                    this.alertService.success('Your password has been successfully reset', true);
                     this.router.navigate(['/login']);
                 },
                 error => {
@@ -50,4 +54,5 @@ export class ForgotPasswordComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
 }

@@ -17,13 +17,15 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { ForgotPasswordComponent} from './forgot-password';
+import { CompareValidatorDirective } from './_directives/compare-validator.directive';
+import { ResetPasswordComponent } from './reset-password';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        routing,
     ],
     declarations: [
         AppComponent,
@@ -31,7 +33,9 @@ import { ForgotPasswordComponent} from './forgot-password';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
+        ResetPasswordComponent,
+        CompareValidatorDirective
     ],
     providers: [
         AuthGuard,

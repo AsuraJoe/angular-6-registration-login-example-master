@@ -26,7 +26,12 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${config.apiUrl}/users/` + id);
     }
+
     forgotPass(user:User) {
         return this.http.post(`${config.apiUrl}/users/resetRequest`, user);
+    }
+
+    resetPass(user: User, token: String){
+        return this.http.post( `${config.apiUrl}/users/resetPassword?token=` + token, user);
     }
 }
