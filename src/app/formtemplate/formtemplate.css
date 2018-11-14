@@ -1,13 +1,13 @@
-.login-form .form-control {
+.template-form .form-control {
     border: 1px solid #320ed3;
     border-radius: 4px;
     height: 50px;
     line-height: 50px;
   }
-  .login-form .form-group {
+  .template-form .form-group {
     margin-bottom:10px;
   }
-  .login-form{ text-align:center;}
+  .template-form{ text-align:center;}
   .card {
     border: 0px;
     background-color:#100c25;
