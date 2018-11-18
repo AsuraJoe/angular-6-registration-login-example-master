@@ -7,6 +7,9 @@
   .login-form .form-group {
     margin-bottom:10px;
   }
+  .login-form .form-group .button{
+    color:#7a6ba1 ;
+  }
   .login-form{ text-align:center;}
   .card {
     border: 0px;
