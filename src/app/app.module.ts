@@ -19,6 +19,8 @@ import { RegisterComponent } from './register';
 import { ForgotPasswordComponent} from './forgot-password';
 import { CompareValidatorDirective } from './_directives/compare-validator.directive';
 import { ResetPasswordComponent } from './reset-password';
+import { FormTemplate } from './formtemplate';
+
 
 @NgModule({
     imports: [
@@ -35,7 +37,8 @@ import { ResetPasswordComponent } from './reset-password';
         RegisterComponent,
         ForgotPasswordComponent,
         ResetPasswordComponent,
-        CompareValidatorDirective
+        CompareValidatorDirective,
+        FormTemplate  
     ],
     providers: [
         AuthGuard,
