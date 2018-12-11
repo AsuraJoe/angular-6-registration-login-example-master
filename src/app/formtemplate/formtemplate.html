@@ -32,10 +32,10 @@
 </div>
     <div class="col-sm-3 mx-auto">
         <div class="card">
-            <div class="card-header"><h4>Submitted forms</h4></div>
+            <div class="card-header"><h4>Submitted forms <span class="badge badge-success">{{forms.length}}</span></h4></div>
             <div class="card-body">
                     <ul class="list-group expand list-group-flush" *ngFor='let form of forms'>
-                        <a class="list-group-item">{{currentUser.id}}</a>
+                        <a class="list-group-item">form #{{form.id}}<span class="badge badge-secondary">Dated {{form.createdDate}}</span></a>
                     </ul>
             </div>
         </div>

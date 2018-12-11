@@ -19,14 +19,14 @@ export class FormTemplate implements OnInit{
     constructor(
         private formBuilder: FormBuilder,
         private formService: FormService,
-        private alertService: AlertService) {}
+        private alertService: AlertService) {};
 
     
     ngOnInit(){
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.loadAllUserDocs;
+        this.loadAllUserDocs();
         this.formTemplate = this.formBuilder.group({
-            user_id : [this.currentUser.id],
+            user_id : [this.currentUser._id],
             name: ['', Validators.required],
             ssn: ['', Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern('\d')],
             gender: ['', Validators.required],
@@ -35,7 +35,7 @@ export class FormTemplate implements OnInit{
             publicRecord: ['', Validators.required],
             religousRecord: ['', Validators.required],
             citizenship: [null, Validators.required]
-        })
+        });
     }
 
     get f() { return this.formTemplate.controls; }
@@ -60,7 +60,7 @@ export class FormTemplate implements OnInit{
     }
 
     loadAllUserDocs() {
-        this.formService.getByUserId(this.currentUser.id).pipe(first()).subscribe( forms=>{
+        this.formService.getByUserId(this.currentUser._id).pipe(first()).subscribe( forms=>{
             this.forms = forms;
 
         })
