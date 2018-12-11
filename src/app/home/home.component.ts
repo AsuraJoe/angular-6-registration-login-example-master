@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
 
     constructor(private userService: UserService, private claimService: FormService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    
     }
 
     ngOnInit() {
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
         this.loadAllDocuments();
     }
 
-    deleteUser(id: number) {
+    deleteUser(id: string) {
         this.userService.delete(id).pipe(first()).subscribe(() => { 
             this.loadAllUsers() 
         });

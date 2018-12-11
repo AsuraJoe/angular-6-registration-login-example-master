@@ -60,7 +60,7 @@ export class FormTemplate implements OnInit{
     }
 
     loadAllUserDocs() {
-        this.formService.getByUserId(this.currentUser.id.toLocaleString()).pipe(first()).subscribe( forms=>{
+        this.formService.getByUserId(this.currentUser.id).pipe(first()).subscribe( forms=>{
             this.forms = forms;
 
         })
