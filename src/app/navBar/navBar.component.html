@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #2f25af;" *ngIf="userFlag | async as isLoggedIn">
+        <a class="navbar-brand" href="#">
+          <img src="https://www.accenture.com/us-en/_acnmedia/926DF339834346BDA98C8D89A2D6D0F7.ashx?la=en" height="45" width="45">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/']">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/formtemplate']">Disablity Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+        <span class="navbar-brand">
+            <a class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{currentUser.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" [routerLink]="['/login']"><i class="fas fa-power-off"></i> Logout</a>
+                </div>
+            </a>
+          </span>
+      </nav>

@@ -7,6 +7,7 @@ import { AuthGuard } from './_guards';
 import { ForgotPasswordComponent } from './forgot-password';
 import { ResetPasswordComponent } from './reset-password';
 import { FormTemplate } from './formtemplate';
+import { ProfileComponent } from './profile';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent},
     { path: 'reset_password', component: ResetPasswordComponent},
     { path: 'formtemplate', component: FormTemplate},
+    { path: 'userProfile', component: ProfileComponent},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

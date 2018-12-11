@@ -1,7 +1,43 @@
-<html>
-    <a [routerLink] = "['']">Home</a>
-    <h1>
-        <font color="#FFFFFF">Application for Disability Insurance Benefits</font>
-    </h1>
-        <embed src="https://files.slack.com/files-pri/TCGEY7ES3-FDC9LMAD9/ssa-16-bk.pdf" width="1080px" height="2100px"/>
-</html>
+<div class="row justify-content-center bottom py-5">
+        <div class="col-lg-7 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4> APPLICATION FOR DISABILITY INSURANCE BENEFITS </h4>
+                </div>
+                <div class="card-body">
+                    <form class="form-template" [formGroup]="formTemplate" (ngSubmit)="OnSubmit()">
+                        <div class="form-group row">
+                            <label class ="control-label col-sm-3">Name </label>
+                            <div class="col-sm-9">
+                            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="name" required/>
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">name is required</div>
+                            </div>
+                            </div>
+                </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3">Social security number </label>
+                    <div class="col-sm-9">
+                    <input type="text" formControlName="ssn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ssn.errors }" placeholder="ssn" required/>
+                    <div *ngIf="submitted && f.ssn.errors" class="invalid-feedback">
+                        <div *ngIf="f.ssn.errors.required">Social security number is required</div>
+                        <div *ngIf="f.ssn.errors.maxLength(9)">Social security number can't have more than 9 numbers</div>
+                        <div *ngIf="f.ssn.errors.minLength(9)">Social security number can't have less than 9 numbers</div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <div class="col-sm-3 mx-auto">
+        <div class="card">
+            <div class="card-header"><h4>Submitted forms</h4></div>
+            <div class="card-body">
+                    <ul class="list-group expand list-group-flush" *ngFor='let form of forms'>
+                            <a class="list-group-item">form #{{form.id}}</a>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div>

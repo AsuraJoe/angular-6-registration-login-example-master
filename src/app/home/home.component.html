@@ -1,14 +1,16 @@
 ﻿<font color="#FFFFFF">
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 6!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}} )
         - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+        </li>
+    </ul>
+    <ul>
+        <li *ngFor="let form of forms">
+        {{form.id}}
+        </li>
+    </ul>
 </font>
-<h3><a [routerLink] = "['/formtemplate']">Disability Form</a></h3>
-
 <p><a [routerLink]="['/login']">Logout</a></p>

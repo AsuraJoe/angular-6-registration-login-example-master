@@ -1,16 +1,8 @@
 ﻿<!-- main app container -->
-<div class="container py">
-    <div class="row">
-        <div class="col-md-12">
-            <alert></alert>
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
 
+    <app-nav></app-nav>
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+        <div class="fixed-bottom"><alert></alert></div>
+    </div>
 <!-- credits -->
-<div class="text-center">
-<p>
-    <a href="http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial" target="_top">This page is based on the example from Jason Watmore</a>
-</p>
-</div>
