@@ -3,7 +3,7 @@ import { first } from 'rxjs/operators'
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { AlertService, FormService } from '../_services';
-import { User, Form } from "../_models";
+import { User, Form, Item } from "../_models";
 
 
 @Component({selector: 'app-claim', templateUrl: 'formtemplate.html', styleUrls: ['formtemplate.css']})
@@ -15,6 +15,16 @@ export class FormTemplate implements OnInit{
     loading = false;
     submitted = false;
     forms: Form [] = [];
+    items: Item[] = [
+        {id: '1', question: 'Enter Name'},
+        {id: '2', question: 'Enter your Social Security Number'},
+        {id: '3', question: 'Check your Gender'},
+        {id: '5a', question: 'Enter your date of birth'},
+        {id: '5b', question: 'Enter name of city and state or foreign country where you were born'},
+        {id: '5c', question: 'Was a public record of your birth made before you were age 5?'},
+        {id: '5d', question: 'Was a religious record of your birth made before you were age 5?'},
+        {id: '6a', question: 'Are you a U.S. citizen?'},
+    ];
     
     constructor(
         private formBuilder: FormBuilder,
@@ -29,18 +39,18 @@ export class FormTemplate implements OnInit{
             user_id : [this.currentUser._id],
             name: ['', Validators.required],
             ssn: ['', Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern('\d')],
-            gender: ['', Validators.required],
+            gender: ['Male', Validators.required],
             dob: ['', Validators.required],
             pob: ['', Validators.required],
-            publicRecord: ['', Validators.required],
-            religousRecord: ['', Validators.required],
-            citizenship: [null, Validators.required]
+            publicRecord: ['Yes', Validators.required],
+            religiousRecord: ['Yes', Validators.required],
+            citizenship: [true, Validators.required]
         });
     }
 
     get f() { return this.formTemplate.controls; }
 
-    OnSubmit(){
+    onSubmit(){
         this.submitted = true;
         if(this.formTemplate.invalid){
             return;

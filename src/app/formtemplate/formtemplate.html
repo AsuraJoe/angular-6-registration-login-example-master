@@ -5,9 +5,9 @@
                     <h4> APPLICATION FOR DISABILITY INSURANCE BENEFITS </h4>
                 </div>
                 <div class="card-body">
-                    <form class="form-template" [formGroup]="formTemplate" (ngSubmit)="OnSubmit()">
+                    <form class="form-template" [formGroup]="formTemplate" (ngSubmit)="onSubmit()">
                         <div class="form-group row">
-                            <label class ="control-label col-sm-3">Name </label>
+                            <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[0].id}}</span> {{items[0].question}}</label>
                             <div class="col-sm-9">
                             <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="name" required/>
                             <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
@@ -16,16 +16,122 @@
                             </div>
                 </div>
                 <div class="form-group row">
-                    <label class ="control-label col-sm-3">Social security number </label>
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[1].id}}</span> {{items[1].question}} </label>
                     <div class="col-sm-9">
                     <input type="text" formControlName="ssn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ssn.errors }" placeholder="ssn" required/>
                     <div *ngIf="submitted && f.ssn.errors" class="invalid-feedback">
                         <div *ngIf="f.ssn.errors.required">Social security number is required</div>
-                        <div *ngIf="f.ssn.errors.maxLength(9)">Social security number can't have more than 9 numbers</div>
-                        <div *ngIf="f.ssn.errors.minLength(9)">Social security number can't have less than 9 numbers</div>
+                        <div *ngIf="f.ssn.errors.maxlength">Social security number can't have more than 9 numbers</div>
+                        <div *ngIf="f.ssn.errors.minlength">Social security number can't have less than 9 numbers</div>
+                        <div *ngIf="f.ssn.errors.pattern">Social security number can only contain numbers</div>
                     </div>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[2].id}}</span> {{items[2].question}} </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="gender" value="Male" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                <i class="fas fa-mars-stroke"></i> Male
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="gender" value="Female">
+                            <label class="form-check-label" for="gridRadios2">
+                                <i class="fas fa-venus"></i> Female
+                            </label>
+                          </div>
+                    <div *ngIf="submitted && f.ssn.errors" class="invalid-feedback">
+                        <div *ngIf="f.gender.errors.required">Gender is required</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[3].id}}</span> {{items[3].question}} </label>
+                    <div class="col-sm-9">
+                    <input type="text" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" placeholder="MM/DD/YY (ex: 12/11/2018)" required/>
+                    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                        <div *ngIf="f.dob.errors.required">Date of birth required</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[4].id}}</span> {{items[4].question}} </label>
+                    <div class="col-sm-9">
+                    <input type="text" formControlName="pob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pob.errors }" placeholder="County/City, State (ex: Montgomery, MD)  or  Country (ex: England)" required/>
+                    <div *ngIf="submitted && f.pob.errors" class="invalid-feedback">
+                        <div *ngIf="f.pob.errors.required">Place of Birth is required</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[5].id}}</span> {{items[5].question}} </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="publicRecord" value="Yes" checked>
+                            <label class="form-check-label">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="publicRecord" value="No">
+                            <label class="form-check-label">
+                              No
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="publicRecord" value="Unknown">
+                            <label class="form-check-label">
+                              Unknown
+                            </label>
+                          </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[6].id}}</span> {{items[6].question}} </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="religiousRecord" value="Yes" checked>
+                            <label class="form-check-label" >
+                              Yes
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"  formControlName="religiousRecord" value="No">
+                            <label class="form-check-label">
+                              No
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"  formControlName="religiousRecord" value="Unknown">
+                            <label class="form-check-label" >
+                              Unknown
+                            </label>
+                          </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[7].id}}</span> {{items[7].question}} </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="citizenship" [value]="true" checked>
+                            <label class="form-check-label" >
+                              Yes
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="citizenship" [value]="false">
+                            <label class="form-check-label">
+                              No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                </div>
+                <pre>{{formTemplate.value | json}}</pre>
             </form>
         </div>
     </div>
