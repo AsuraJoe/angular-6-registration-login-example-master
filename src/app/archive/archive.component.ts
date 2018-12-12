@@ -1,22 +1,23 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { first } from 'rxjs/operators';
 
 import { User, Form } from '../_models';
 import { UserService, FormService } from '../_services';
 
-@Component({templateUrl: 'home.component.html', styleUrls: ['home.component.css']})
-export class HomeComponent implements OnInit {
+@Component({templateUrl: 'archive.component.html', styleUrls: ['archive.component.css']})
+
+export class ArchiveComponent{
     currentUser: User;
     users: User[] = [];
     forms: Form[] = [];
     
-    constructor(private userService: UserService, private claimService: FormService) {
+    constructor(private userService: UserService, private formService: FormService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
         this.loadAllUsers();
-        this.loadAllDocuments();
+        this.loadAllUserDocs();
     }
 
     deleteUser(id: string) {
@@ -31,10 +32,10 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    private loadAllDocuments() {
-        this.claimService.getAll().pipe(first()).subscribe(forms => {
+    loadAllUserDocs() {
+        this.formService.getByUserId(this.currentUser._id).pipe(first()).subscribe( forms=>{
             this.forms = forms;
+
         })
     }
-    
 }

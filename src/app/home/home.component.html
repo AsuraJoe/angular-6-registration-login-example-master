@@ -1,16 +1,10 @@
 ﻿<font color="#FFFFFF">
-    <h1>Hi {{currentUser.firstName}} ({{currentUser._id}})!</h1>
+    <h1>Hi {{currentUser.firstName}}!</h1>
     <h3>All registered users:</h3>
     <ul>
         <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}} )
         - <a (click)="deleteUser(user._id)" class="text-danger">Delete</a>
-        </li>
-    </ul>
-    <ul>
-        <li *ngFor="let form of forms">
-        {{form.id}}
-        </li>
     </ul>
 </font>
 <p><a [routerLink]="['/login']">Logout</a></p>

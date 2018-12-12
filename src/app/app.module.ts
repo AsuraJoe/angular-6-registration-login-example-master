@@ -12,7 +12,7 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService, FormService } from './_services';
+import { AlertService, AuthenticationService, UserService, FormService, ModalService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -22,6 +22,7 @@ import { ResetPasswordComponent } from './reset-password';
 import { FormTemplate } from './formtemplate';
 import { NavigationComponent } from './navBar/nav-bar.component';
 import { ProfileComponent } from './profile';
+import { ArchiveComponent } from './archive';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ProfileComponent } from './profile';
         CompareValidatorDirective,
         FormTemplate,
         NavigationComponent,
-        ProfileComponent  
+        ProfileComponent,
+        ArchiveComponent  
     ],
     providers: [
         AuthGuard,
@@ -50,6 +52,7 @@ import { ProfileComponent } from './profile';
         AuthenticationService,
         UserService,
         FormService,
+        ModalService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

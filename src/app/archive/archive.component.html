@@ -1,0 +1,27 @@
+<div class="container py">
+            <div class="row py-5">
+                <div class="col-md-12 mx-auto">
+                        <div class="card-header"><h3>Archive</h3></div>   
+                        <div id="table_wrapper">
+                            <table class="table table-hover table-dark scroll" >
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Action</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Created Account</td>
+                                        <td>{{currentUser.createdDate}}</td>
+                                    </tr>
+                                    <tr *ngFor="let form of forms">
+                                        <td>Submitted Form</td>
+                                        <td>{{form.createdDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                </div>
+        </div>
+    </div>
+</div>

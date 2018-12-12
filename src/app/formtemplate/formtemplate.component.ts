@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { AlertService, FormService } from '../_services';
 import { User, Form, Item } from "../_models";
+import { Route } from "@angular/compiler/src/core";
 
 
 @Component({selector: 'app-claim', templateUrl: 'formtemplate.html', styleUrls: ['formtemplate.css']})
@@ -25,6 +26,8 @@ export class FormTemplate implements OnInit{
         {id: '5d', question: 'Was a religious record of your birth made before you were age 5?'},
         {id: '6a', question: 'Are you a U.S. citizen?'},
     ];
+    refreshUrl: string;
+    route: Route;
     
     constructor(
         private formBuilder: FormBuilder,
@@ -38,9 +41,9 @@ export class FormTemplate implements OnInit{
         this.formTemplate = this.formBuilder.group({
             user_id : [this.currentUser._id],
             name: ['', Validators.required],
-            ssn: ['', Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern('\d')],
+            ssn: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern('[0-9]*')]],
             gender: ['Male', Validators.required],
-            dob: ['', Validators.required],
+            dob: ['', [Validators.required]],
             pob: ['', Validators.required],
             publicRecord: ['Yes', Validators.required],
             religiousRecord: ['Yes', Validators.required],

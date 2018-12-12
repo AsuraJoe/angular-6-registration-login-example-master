@@ -4,7 +4,7 @@
                 <div class="card-header">
                     <h4> APPLICATION FOR DISABILITY INSURANCE BENEFITS </h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body big-scroll">
                     <form class="form-template" [formGroup]="formTemplate" (ngSubmit)="onSubmit()">
                         <div class="form-group row">
                             <label class ="control-label col-sm-3"><span class="badge badge-pill badge-info">{{items[0].id}}</span> {{items[0].question}}</label>
@@ -42,9 +42,6 @@
                                 <i class="fas fa-venus"></i> Female
                             </label>
                           </div>
-                    <div *ngIf="submitted && f.ssn.errors" class="invalid-feedback">
-                        <div *ngIf="f.gender.errors.required">Gender is required</div>
-                    </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -137,9 +134,9 @@
     </div>
 </div>
     <div class="col-sm-3 mx-auto">
-        <div class="card">
+        <div class="card ">
             <div class="card-header"><h4>Submitted forms <span class="badge badge-success">{{forms.length}}</span></h4></div>
-            <div class="card-body">
+            <div class="card-body scroll">
                     <ul class="list-group expand list-group-flush" *ngFor='let form of forms'>
                         <a class="list-group-item">form #{{form.id}}<span class="badge badge-secondary">Dated {{form.createdDate}}</span></a>
                     </ul>
