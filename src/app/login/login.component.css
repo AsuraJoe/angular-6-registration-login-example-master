@@ -29,3 +29,14 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+.btn-success{
+  border-radius: 20px;
+  height: 33px;
+}
+.btn-danger{
+  border-radius: 20px;
+  height: 33px;
+}
+#login{
+  padding-bottom: 40px;
+}
